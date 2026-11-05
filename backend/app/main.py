@@ -1,6 +1,8 @@
+import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from app.core.config import settings
 from app.database.session import Base, engine
 import app.models  # Ensures all models are registered with Base.metadata
@@ -36,7 +38,7 @@ app.add_middleware(
 app.include_router(api_v1_router, prefix=settings.API_V1_PREFIX)
 
 
-@app.get("/", tags=["Health"])
+@app.get("/api-info", tags=["Health"])
 def root():
     return {
         "app": settings.PROJECT_NAME,
@@ -49,3 +51,10 @@ def root():
 @app.get("/health", tags=["Health"])
 def health_check():
     return {"status": "healthy"}
+
+
+# Mount Flutter Web production build if available
+web_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../frontend/build/web"))
+if os.path.exists(web_dir):
+    app.mount("/", StaticFiles(directory=web_dir, html=True), name="static")
+

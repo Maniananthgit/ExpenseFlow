@@ -792,3 +792,4 @@ class LocalStorageManager {
     ];
   }
 }
+

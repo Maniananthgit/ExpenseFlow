@@ -1,0 +1,100 @@
+name: ExpenseFlow CI & Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  backend-tests:
+    name: Backend Test Suite (FastAPI + SQLAlchemy + Pytest)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Dependencies
+        working-directory: ./backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Backend Pytest Suite
+        working-directory: ./backend
+        env:
+          PYTHONPATH: "."
+        run: |
+          python -m pytest tests/ -v
+
+  frontend-tests:
+    name: Frontend Test Suite (Flutter + Dart + Provider)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+
+      - name: Install Flutter Dependencies
+        working-directory: ./frontend
+        run: flutter pub get
+
+      - name: Run Flutter Tests
+        working-directory: ./frontend
+        run: flutter test
+
+  build-and-deploy:
+    name: Build & Deploy Web Client to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: [backend-tests, frontend-tests]
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+
+      - name: Install Dependencies
+        working-directory: ./frontend
+        run: flutter pub get
+
+      - name: Build Flutter Web App
+        working-directory: ./frontend
+        run: flutter build web --release --base-href /ExpenseFlow/
+
+      - name: Copy index.html to 404.html for GoRouter routing
+        run: cp frontend/build/web/index.html frontend/build/web/404.html
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend/build/web
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

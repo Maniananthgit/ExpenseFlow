@@ -13,3 +13,4 @@ api_v1_router.include_router(transactions_router)
 api_v1_router.include_router(budgets_router)
 api_v1_router.include_router(dashboard_router)
 api_v1_router.include_router(reports_router)
+

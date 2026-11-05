@@ -81,3 +81,4 @@ def test_transaction_crud_and_isolation(client, auth_headers, second_auth_header
     # Verify deleted
     get_del = client.get(f"/api/v1/transactions/{expense_tx['id']}", headers=auth_headers)
     assert get_del.status_code == 404
+

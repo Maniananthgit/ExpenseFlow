@@ -58,3 +58,4 @@ def test_dashboard_analytics(client, auth_headers):
     assert trends_resp.status_code == 200
     trends = trends_resp.json()["trends"]
     assert len(trends) == 12
+

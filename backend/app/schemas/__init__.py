@@ -15,3 +15,4 @@ __all__ = [
     "DashboardSummary", "DashboardCategoryBreakdown", "DashboardMonthlyTrends", "CategoryBreakdownItem", "MonthlyTrendItem",
     "MonthlyReportResponse", "YearlyReportResponse",
 ]
+

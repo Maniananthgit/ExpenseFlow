@@ -6,3 +6,4 @@ from app.models.transaction import Transaction
 from app.models.budget import Budget
 
 __all__ = ["Base", "GUID", "User", "Category", "Transaction", "Budget"]
+

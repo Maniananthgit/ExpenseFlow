@@ -34,3 +34,4 @@ class YearlyReportResponse(BaseModel):
     savings_rate: float
     monthly_trends: List[MonthlyTrendItem]
     category_breakdown: List[CategoryBreakdownItem]
+

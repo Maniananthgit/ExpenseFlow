@@ -44,3 +44,4 @@ def get_category_breakdown(
 ):
     """Retrieve category-wise spending and income proportions."""
     return dashboard_service.get_category_breakdown(db, current_user, month, year)
+

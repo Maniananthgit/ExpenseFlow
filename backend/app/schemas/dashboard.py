@@ -47,3 +47,4 @@ class DashboardCategoryBreakdown(BaseModel):
 class DashboardMonthlyTrends(BaseModel):
     currency: str
     trends: List[MonthlyTrendItem]
+

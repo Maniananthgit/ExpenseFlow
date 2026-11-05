@@ -39,3 +39,4 @@ def get_current_user(
             detail="Inactive user account.",
         )
     return user
+

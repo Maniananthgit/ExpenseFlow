@@ -259,3 +259,4 @@ python -m pytest -v
 ## 📄 License
 
 MIT License. Designed and built for professional software engineering portfolios.
+

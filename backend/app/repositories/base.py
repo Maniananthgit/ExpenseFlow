@@ -26,3 +26,4 @@ class BaseRepository(Generic[ModelType]):
             db.delete(obj)
             db.commit()
         return obj
+

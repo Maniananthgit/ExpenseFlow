@@ -77,3 +77,4 @@ def change_password(
 def logout(current_user: User = Depends(get_current_user)):
     """Log out current user (token discarded client-side)."""
     return {"message": "Logged out successfully."}
+

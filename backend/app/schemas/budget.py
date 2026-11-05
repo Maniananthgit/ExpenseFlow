@@ -48,3 +48,4 @@ class BudgetSummaryResponse(BaseModel):
     total_remaining: Decimal
     overall_utilization: float
     budgets: List[BudgetResponse]
+

@@ -50,3 +50,4 @@ def delete_category(
     """Delete a custom category owned by the user."""
     category_service.delete_category(db, category_id, current_user.id)
     return None
+

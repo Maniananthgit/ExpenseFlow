@@ -41,3 +41,4 @@ def create_access_token(subject: Union[str, Any], expires_delta: timedelta = Non
 def decode_access_token(token: str) -> dict:
     """Decodes and validates a JWT access token."""
     return jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+

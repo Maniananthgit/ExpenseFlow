@@ -69,3 +69,4 @@ volumes:
 networks:
   expenseflow_network:
     driver: bridge
+

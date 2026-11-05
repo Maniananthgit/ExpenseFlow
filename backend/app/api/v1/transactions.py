@@ -82,3 +82,4 @@ def delete_transaction(
     """Delete a transaction."""
     transaction_service.delete_transaction(db, current_user.id, transaction_id)
     return None
+

@@ -72,3 +72,4 @@ def test_change_password(client, auth_headers):
         json={"email": "testuser@example.com", "password": "NewSecretPassword456"},
     )
     assert login_resp.status_code == 200
+

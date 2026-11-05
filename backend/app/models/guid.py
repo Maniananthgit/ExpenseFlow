@@ -35,3 +35,4 @@ class GUID(TypeDecorator):
         if not isinstance(value, uuid.UUID):
             return uuid.UUID(str(value))
         return value
+

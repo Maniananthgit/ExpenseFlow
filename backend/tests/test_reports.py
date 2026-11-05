@@ -58,3 +58,4 @@ def test_reports_and_csv_export(client, auth_headers):
     assert "Transaction ID,Date,Type,Category,Amount,Currency,Description,Created At" in csv_text
     assert "Consulting Income" in csv_text
     assert "Equipment Purchase" in csv_text
+

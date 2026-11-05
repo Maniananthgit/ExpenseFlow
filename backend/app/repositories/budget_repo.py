@@ -53,3 +53,4 @@ class BudgetRepository(BaseRepository[Budget]):
 
 
 budget_repo = BudgetRepository()
+

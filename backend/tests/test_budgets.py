@@ -92,3 +92,4 @@ def test_budget_workflow_and_calculations(client, auth_headers):
     )
     assert dup_resp.status_code == 400
     assert "already exists" in dup_resp.json()["detail"]
+

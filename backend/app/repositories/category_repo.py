@@ -43,3 +43,4 @@ class CategoryRepository(BaseRepository[Category]):
 
 
 category_repo = CategoryRepository()
+

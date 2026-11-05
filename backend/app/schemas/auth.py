@@ -25,3 +25,4 @@ class ChangePasswordRequest(BaseModel):
 
 from app.schemas.user import UserResponse
 Token.model_rebuild()
+

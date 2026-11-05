@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     API_V1_PREFIX: str = "/api/v1"
     
     # Database
-    DATABASE_URL: str = "postgresql://postgres:12345@localhost:5432/expenseflow_db"
+    DATABASE_URL: str = "postgresql+psycopg2://postgres:12345@localhost:5432/expenseflow_db"
     
     # Security & JWT
     SECRET_KEY: str = "supersecretkey-expenseflow-fintech-jwt-token-2026-production-grade"

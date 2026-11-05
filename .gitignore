@@ -48,6 +48,7 @@ frontend/.env
 
 # Database local data
 *.sqlite3
+backend/static/
 postgres_data/
 
 # OS generated

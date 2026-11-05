@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import 'core/storage/local_storage.dart';
 import 'core/theme/app_theme.dart';
 import 'viewmodels/auth_viewmodel.dart';
 import 'viewmodels/budget_viewmodel.dart';
@@ -22,8 +23,9 @@ import 'views/reports/reports_view.dart';
 import 'views/shell/app_shell.dart';
 import 'views/transactions/transactions_view.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await LocalStorageManager.ensureInitialized();
   runApp(const ExpenseFlowApp());
 }
 

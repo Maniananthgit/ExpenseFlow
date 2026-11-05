@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     API_V1_PREFIX: str = "/api/v1"
     
     # Database
-    DATABASE_URL: str = "postgresql+psycopg2://postgres:12345@localhost:5432/expenseflow_db"
+    DATABASE_URL: str = "postgresql+psycopg2://neondb_owner:npg_vO8DHhN3wJEb@ep-orange-frost-beug30ej.c-9.us-east-2.aws.neon.tech/neondb?sslmode=require"
     
     # Security & JWT
     SECRET_KEY: str = "supersecretkey-expenseflow-fintech-jwt-token-2026-production-grade"
